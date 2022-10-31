@@ -9,7 +9,7 @@ float V1[N];
 float V2[N];
 float V3[N];
 float V4[N];
-float vectres[N];
+float VRES[N];
 float alfa;
 
 
@@ -42,27 +42,31 @@ void PrintVect( float vect[N], int from, int numel ){
 
 
 void PrintRow( float mat[N][N], int row, int from, int numel ){
- int i;
  int j;
- for (i=from; i<=numel; i++){
-  for (j=row; i<=numel; i++){
-   printf("%f \n",mat[i][j]);
+  for (j=row; j<=numel; j++){
+   printf("%f \n",mat[row][j]);
   }
- }
 }
+
 
 void MultEscalar( float vect[N], float vectres[N], float alfa ){
 int i;
 for (i=0;i<N;i++){
  vectres[i]=vect[i]*alfa;
+ printf("%f \n",vectres[i]);
  }
-printf("%f \n",vectres[i]);
 }
 
+
 int main(){
+printf("Inicialitzo \n"); 
  InitData();
+printf("Imprimexo vector \n");
  PrintVect(V1, 3, 10);
- PrintRow(Mat, 1, 3, 10); 
- alfa=10;
+printf("Imprimexo fila \n");
+ PrintRow(Mat, 1, 3, 10);
+printf("Imprimexo multiplicació escalar \n");
+ MultEscalar(V1, VRES, 5.0); 
 return 0;
-}
+}  
+ 
