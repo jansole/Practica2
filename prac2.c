@@ -75,7 +75,7 @@ int i;
 for (i=0; i<N; i++){
  mag += vect[i]*vect[i];
  }
-mag1 = sqrt(mag)
+mag1 = sqrt(mag);
 return mag1;
 }
 
