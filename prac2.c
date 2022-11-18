@@ -12,7 +12,7 @@ float V3[N];
 float V4[N];
 float alfa;
 
-void InitData(){
+void InitData(){ // Iniciem les matrius
 int i,j;
 srand(8824553);
 for( i = 0; i < N; i++ )
@@ -35,7 +35,7 @@ for( i = 0; i < N; i++ ){
 void PrintVect( float vect[N], int from, int numel ){ 
  int i;
  for (i=from; i<=numel; i++){
-  printf("%f \n",vect[i]);
+  printf("%f \n",vect[i]); // Mostrem un nombre d'elements
  }
 }
 
@@ -43,7 +43,7 @@ void PrintVect( float vect[N], int from, int numel ){
 void PrintRow( float mat[N][N], int row, int from, int numel ){
  int j;
   for (j=from; j<=numel; j++){
-   printf("%f \n",mat[row][j]); 
+   printf("%f \n",mat[row][j]); // Imprimim tota una fila
   }
 } 
 
@@ -51,7 +51,7 @@ void PrintRow( float mat[N][N], int row, int from, int numel ){
 void MultEscalar( float vect[N], float vectres[N], float alfa, int from, int numel ){
 int i;
 for (i=0;i<N;i++){
- vectres[i]=vect[i]*alfa;
+ vectres[i]=vect[i]*alfa; // Multipliquem tots els valors del vector per alfa
 }
 for (i=from; i<numel; i++) {
    printf("%f \n",vect[i]);
@@ -61,9 +61,9 @@ for (i=from; i<numel; i++) {
 
 float Scalar( float vect1[N], float vect2[N] ){
 int i;
-float ProducteEscalar = 0.0;
+float ProducteEscalar = 0.0; //Inicialitzem
 for (i=0; i<N; i++){
- ProducteEscalar += vect1[i] * vect2[i];
+ ProducteEscalar += vect1[i] * vect2[i]; //Fem el prod. escalar
  }
 return ProducteEscalar;
 }
@@ -75,7 +75,7 @@ int i;
 for (i=0; i<N; i++){
  mag += vect[i]*vect[i];
  }
-mag1 = sqrt(mag);
+mag1 = sqrt(mag); //Fem l'arrel quadrada gràcies a l'include del math.h
 return mag1;
 }
 
@@ -87,18 +87,18 @@ int Ortogonal (float vect1[N], float vect2[N]){
         orto = orto + vect1[i]*vect2[i];
     }
     if (orto==0){
-	    return 1; }
+	    return 1; } // Retornem 1 si es compleix
     else{ 
         return 0; }
 }
 
-int Ortogonal_resultat (float vect1[N], float vect2[N]){
+int Ortogonal_resultat (float vect1[N], float vect2[N]){ // Tornem a copiar la funció per a que aquesta ens torni el resultat en sí
     float orto = 0;
     int i;
     for (i=0; i<N; i++){
         orto += vect1[i]*vect2[i];
     }
-    return orto;
+    return orto; 
     }
 
 
@@ -106,7 +106,7 @@ void Projection( float vect1[N], float vect2[N], float vectres[N], int from, int
  float scalar = Scalar(vect1,vect2);
  float magnitud = Magnitude(vect2);
  int i;
- vectres[N] = (scalar / magnitud) * (vect2[N]);
+ vectres[N] = (scalar / magnitud) * (vect2[N]); // Apliquem la fórmula de la projecció
  for (i=from; i<numel; i++) {
    printf("La projecció és: %f \n",vectres[i]);
  }
@@ -118,7 +118,7 @@ float Infininorm( float M[N][N] ){
  int infini_norma=0;
  int llista[N];
  for (i=0; i<(N); i++){
-    infini_norma = infini_norma + fabs(M[i][0]);
+    infini_norma = infini_norma + fabs(M[i][0]); //Variem només la fila
     llista[i] = infini_norma;
         }
  for (i=0; i<(N); i++){
@@ -126,7 +126,7 @@ float Infininorm( float M[N][N] ){
         llista[0] = llista[i];
     }
     }
- return llista[0];
+ return llista[0]; //Retornem el més gran, que haviem guardat a la primera posició
 }
 
 float Onenorm( float M[N][N] ){
@@ -134,7 +134,7 @@ float Onenorm( float M[N][N] ){
  int one_norma=0;
  int llista[N];
  for (j=0; j<(N); j++){
-    one_norma = one_norma + fabs(M[0][j]);
+    one_norma = one_norma + fabs(M[0][j]); //Variem només la columna
     llista[j] = one_norma;
         }
  for (j=0; j<(N); j++){
@@ -151,10 +151,10 @@ int NormForbenius( float M[N][N] ){
     int resultat=0;
     for (i=0; i<N; i++) {
         for (j=0; j<(N); j++){
-            suma = suma + pow(M[i][j],2);
+            suma = suma + pow(M[i][j],2); //Elevem el valor al quadrat
         }
     }
-    resultat = sqrt(suma);
+    resultat = sqrt(suma); 
     return resultat;
 }
 
